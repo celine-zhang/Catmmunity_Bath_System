@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cats Bath Appointment System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Catmmunity</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/catsbathing}">Appointments</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">Features</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">Pricing</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+<!--                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <h1>List All Appointments</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href = "@{/cats/new}" class="btn btn-primary btn-sm mb-3">Add New Appointment</a>
+
+            </div>
+
+        </div>
+            <div>
+                <table class="table table-striped table-border">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Cat's Name</th>
+                            <th scope="col">Cat's Breed</th>
+                            <th scope="col">Master's Email</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cat: ${cats}">
+                            <td th:text="${cat.name}"></td>
+                            <td th:text="${cat.breed}"></td>
+                            <td th:text="${cat.email}"></td>
+                            <td>
+                                <a th:href = "@{/cats/edit/{id}(id=${cat.id})}"
+                                class="btn btn-primary">Edit</a>
+                                <a th:href = "@{/cats/{id}(id=${cat.id})}"
+                                   class="btn btn-danger">Delete</a>
+                            </td>
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+    </div>
+
+</body>
+</html>
